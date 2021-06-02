@@ -12,8 +12,10 @@
     "core-js": "^3.6.5",
     "echarts": "^5.1.1",
     "element-ui": "^2.15.1",
+    "file-saver": "^2.0.5",
     "umy-ui": "^1.1.6",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

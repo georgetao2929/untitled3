@@ -8,6 +8,7 @@
       </div>
     </div>
     <el-button @click="addData">addData</el-button>
+    <el-button type="primary" style="background-color: #0086b3" @click="exportExcel">导出</el-button>
     <div>
       <el-table
           class="table"
@@ -56,6 +57,8 @@
 </template>
 
 <script>
+import FileSaver from 'file-saver'
+import XLSX from 'xlsx'
 export default {
   data() {
     return {
@@ -115,6 +118,17 @@ export default {
     //this.addData()
   },
   methods:{
+    exportExcel () {
+      /* generate workbook object from table */
+      //表名
+      var wb = XLSX.utils.table_to_book(document.querySelector('.table'))
+      /* get binary string as output */
+      var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'array' })
+      try {
+        FileSaver.saveAs(new Blob([wbout], { type: 'application/octet-stream' }), 'order.xlsx')
+      } catch (e) { if (typeof console !== 'undefined') console.log(e, wbout) }
+      return wbout
+    },
     addData(){
       var i
       for(i=0;i<2000;i++)
