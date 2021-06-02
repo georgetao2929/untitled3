@@ -120,7 +120,7 @@ export default {
   methods:{
     exportExcel () {
       /* generate workbook object from table */
-      //表名
+      //table的class名
       var wb = XLSX.utils.table_to_book(document.querySelector('.table'))
       /* get binary string as output */
       var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'array' })
